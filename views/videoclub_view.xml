@@ -19,7 +19,8 @@
     <!-- Aquí creem la vista que volem mostrar -->
      <record model="ir.ui.view" id="view_videoclub_film_category_form"> <!-- Model vista - el id tindrà view_nombreModulo_nombreTabla_form-->
         <field name="name">videoclub.film.category.form</field> <!-- nom que posem al model. Serà modul.nomTaula.form -->
-        <field name="model">videoclub.film.category</field> <!-- Nom de la taula a la que fem referencia (recordeu que sempre els noms de les taules porten el nom del modul) -->
+         <!-- Nom de la taula a la que fem referencia (recordeu que sempre els noms de les taules porten el nom del modul) -->
+        <field name="model">stickers.customized</field>
         <field name="type">form</field> <!-- Tipus formulari -->
         <field name="arch" type="xml"> <!-- Tipus xml -->
             <form string="videoclub_film_category"> <!-- nom del formulari -> nom de la taula -->
@@ -36,7 +37,7 @@
     <!-- Aquí creem l'acció que volem que s'execute (al següent apartat indicarem on volem que s'aplique aquesta acció) -->
     <record model="ir.actions.act_window" id="action_videoclub_film_category_form"><!-- Model activar una finestra - el id tindrà action_nombreModulo_nombreTabla_form-->
         <field name="name">action.videoclub.film.category.form</field> <!-- nom que posem al model. Será action.modulo.nombreTabla.form -->
-        <field name="res_model">videoclub.film.category</field> <!-- Nom de la taula a la que fem referència (recordeu que sempre els noms de les taules porten el nom del modul) -->
+        <field name="res_model">stickers.customized</field> <!-- Nom de la taula a la que fem referència (recordeu que sempre els noms de les taules porten el nom del modul) -->
         <field name="view_mode">form</field> <!-- Vista formulari -->
         <field name="view_id" ref="view_videoclub_film_category_form"/> <!-- Aquesta acció mostrarà la vista que li indiquem a ref -->
     </record>
@@ -50,7 +51,7 @@
          <!--Tree Category--> 
         <record model="ir.ui.view" id="view_videoclub_film_category_tree"> <!-- Posarem tree en compte de form -->
             <field name="name">videoclub.film.category.tree</field> <!-- Aquí també posarem form -->
-            <field name="model">videoclub.film.category</field>
+            <field name="model">stickers.customized</field>
             <field name="arch" type="xml">
                 <tree string="Category Tree"> <!-- nom del arbre -->
 					 <field name="name"/>
@@ -64,7 +65,7 @@
     <!-- Aquí creem una nova vista que no tindra camps com les d'abans, en el action li direm quines vistes volem que es puguen mostra, a aquesta vista la cridarem amb l'acció que tenim avall -->
     <record id="view_videoclub_film_category_search" model="ir.ui.view">
             <field name='name'>videoclub.film.category.search</field>
-            <field name='model'>videoclub.film.category</field>
+            <field name='model'>stickers.customized</field>
             <field name='arch' type='xml'>
                 <search string="Film search">
                 </search>
@@ -73,7 +74,7 @@
     <!-- Aquest es l'action que crida a la vista que tenim dalt, si us fixeu al camp view_mode, podem veure que tenim "tree,form", això vol dir, que podrem veure els dos tipus de vista del model que tenim deifinit a la línia de dalt (res_model = nom de la taula). -->
         <record model="ir.actions.act_window" id="action_videoclub_film_category_search">
             <field name="name">Searching categories</field>
-            <field name="res_model">videoclub.film.category</field>
+            <field name="res_model">stickers.customized</field>
             <field name="view_mode">tree,form</field>
             <field name="search_view_id" ref="view_videoclub_film_category_search"/>
             <field name="help" type="html">

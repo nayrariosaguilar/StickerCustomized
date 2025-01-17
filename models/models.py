@@ -79,6 +79,11 @@ class StickersCustomized(models.Model):
         string="Materials",
         help="Materials used for the sticker"
     )
+    id_product = fields.Many2one(
+        'product.product',
+        string="Product",
+        help="Materials used for the sticker"
+    )
     width = fields.Integer(
         string="Width",
         required=True,
@@ -89,6 +94,7 @@ class StickersCustomized(models.Model):
         required=True,
         help="Height of the sticker"
     )
+
     message_personalized = fields.Text(
         "Personalized Message",
         help="Custom message for the sticker"
