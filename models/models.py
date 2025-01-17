@@ -2,54 +2,98 @@
 
 from odoo import models, fields, api
 
-       
-#Taula amb els films  
-class stickers_material(models.Model):
-    """materials for sticker"""
+# Table for materials
+class StickersMaterial(models.Model):
+    """Material used for stickers"""
     _name = 'stickers.material'
-    _description = "materials for sticker"
+    _description = "Materials for stickers"
 
-    name = fields.Char(string="Name of the material", size=255, required=True, help='Name of the material')
-    material_type  = fields.Char(string="Type of the material", size=255, required=True, help='Type of the material')
+    name = fields.Char(string="Material Name", size=255, required=True, help="Name of the material")
+    material_type = fields.Char(string="Material Type", size=255, required=True, help="Type of the material")
 
-#Taula amb les formes
-class stickers_shape(models.Model):
-    """shape of the sticker"""
+
+# Table for shapes
+class StickersShape(models.Model):
+    """Shape of the sticker"""
     _name = 'stickers.shape'
-    _description = "Name of the shape"
-    name  = fields.Char(string="Name of the shape", size=255, required=True, help='Name of the shape')
+    _description = "Shapes available for stickers"
 
-#Taula amb les color
-class stickers_color(models.Model):
-    """shape of the sticker"""
+    name = fields.Char(string="Shape Name", size=255, required=True, help="Name of the shape")
+
+
+# Table for colors
+class StickersColor(models.Model):
+    """Color options for stickers"""
     _name = 'stickers.color'
-    _description = "Name of the color"
-    color_name  = fields.Char(string="Name of the color", size=255, required=True, help='Name of the shape')
+    _description = "Colors available for stickers"
 
-#scale
-class stickers_scale(models.Model):
-    """materials for sticker"""
+    color_name = fields.Char(string="Color Name", size=255, required=True, help="Name of the color")
+
+
+# Table for scales
+class StickersScale(models.Model):
+    """Scales available for stickers"""
     _name = 'stickers.scale'
-    name  = fields.Char(string="Name of the scale", size=255, required=True, help='Name of the scale')
+    _description = "Scales available for stickers"
 
-#printing
-class stickers_printing(models.Model):
-    """materials for sticker"""
+    name = fields.Char(string="Scale Name", size=255, required=True, help="Name of the scale")
+
+
+# Table for printing types
+class StickersPrinting(models.Model):
+    """Printing types for stickers"""
     _name = 'stickers.printing'
-    _description = "Type of printing"
-    name = fields.Char(string="Type of printing", size=255, required=True, help='Type of printing')
+    _description = "Printing types available for stickers"
 
-#Taula amb els films
-class stickers_customized(models.Model):
-    """materials for sticker"""
+    name = fields.Char(string="Printing Type", size=255, required=True, help="Type of printing")
+
+
+# Table for customized stickers
+class StickersCustomized(models.Model):
+    """Customized sticker details"""
     _name = 'stickers.customized'
-    _description = "Name of the shape"
-    id_finish  = fields.Many2One('stickers.printing',string="Name of the shape", help='Name of the shape')
-    id_color   = fields.Many2Many('stickers.color',string="Name of the shape",  help='Name of the shape')
-    id_scale   = fields.Many2One('stickers.scale',string="Name of the shape",  help='Name of the shape')
-    id_shape   = fields.Many2One('stickers.shape',string="Name of the shape",  help='Name of the shape')
-    id_material  = fields.Many2many('stickers.material',string="Name of the shape",  help='Name of the shape')
-    width  = fields.Integer(string="Name of the shape", size=255, required=True, help='Name of the shape')
-    message_personalized  = fields.Text("Message", help="Personalized Message")
-    image_personalized  = fields.Text("Image", help="Description of the category")
-    height  = fields.Integer(string="Name of the shape", size=255, required=True, help='Name of the shape')
+    _description = "Details of customized stickers"
+
+    id_finish = fields.Many2one(
+        'stickers.printing',
+        string="Printing Type",
+        help="Type of printing for the sticker"
+    )
+    id_color = fields.Many2many(
+        'stickers.color',
+        string="Colors",
+        help="Colors used for the sticker"
+    )
+    id_scale = fields.Many2one(
+        'stickers.scale',
+        string="Scale",
+        help="Scale of the sticker"
+    )
+    id_shape = fields.Many2one(
+        'stickers.shape',
+        string="Shape",
+        help="Shape of the sticker"
+    )
+    id_material = fields.Many2many(
+        'stickers.material',
+        string="Materials",
+        help="Materials used for the sticker"
+    )
+    width = fields.Integer(
+        string="Width",
+        required=True,
+        help="Width of the sticker"
+    )
+    height = fields.Integer(
+        string="Height",
+        required=True,
+        help="Height of the sticker"
+    )
+    message_personalized = fields.Text(
+        "Personalized Message",
+        help="Custom message for the sticker"
+    )
+    image_personalized = fields.Text(
+       "Personalized Image",
+        help="Description of the custom image for the sticker"
+    )
