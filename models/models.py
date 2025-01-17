@@ -17,6 +17,5 @@ class stickers_shape(models.Model):
     """materials for sticker"""
     _name = 'stickers.shape'
     _description = "Name of the shape"
-
     name  = fields.Char(string="Name of the shape", size=255, required=True, help='Name of the shape')
 
