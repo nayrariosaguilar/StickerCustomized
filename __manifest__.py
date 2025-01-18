@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Prueba",
+    'name': "StickerCustomized",
 
     'summary': """
-        Exemple de mòdul incomplert per gestionar un videoclub""",
+        En aquest modul podrás crear y eliminar un Sticker personalizat""",
 
     'description': """
         Aprendre a un mòdul a Odoo
     """,
 
-    'author': "Daniel Mollà",
+    'author': "Nadie",
     'website': "https://campus.proven.cat/course/view.php?id=268",
 
     # Categories can be used to filter modules in modules listing
@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','sale'],
+    'depends': ['base','sale','product'],
 
     # always loaded
     #Desactivem la gestió d'usuaris i a nivell gràfic treballarem com a súperusuari
