@@ -1,2 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_videoclub_film_admin,Accés d'administració a Films de Videoclub,model_videoclub_film_category,base.group_user,1,1,1,1
+access_stickers_material,access_stickers_material,model_stickers_material,base.group_user,1,1,1,1
+access_stickers_shape,access_stickers_shape,model_stickers_shape,base.group_user,1,1,1,1
+access_stickers_color,access_stickers_color,model_stickers_color,base.group_user,1,1,1,1
+access_stickers_scale,access_stickers_scale,model_stickers_scale,base.group_user,1,1,1,1
+access_stickers_printing,access_stickers_printing,model_stickers_printing,base.group_user,1,1,1,1
+access_stickers_customized,access_stickers_customized,model_stickers_customized,base.group_user,1,1,1,1
