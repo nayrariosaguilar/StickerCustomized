@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+ <record id="action_stickers_customized_list" model="ir.actions.act_window">
+    <field name="name">Customized Stickers</field>
+    <field name="res_model">stickers.customized</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<record id="action_stickers_material_list" model="ir.actions.act_window">
+    <field name="name">Materials</field>
+    <field name="res_model">stickers.material</field>
+    <field name="view_mode">tree,form</field>
+</record>
   <menuitem
         name="Stickers Management"
         id="menu_stickers_root"
@@ -55,21 +66,8 @@
         sequence="100"
         action="action_stickers_printing_list"
     />
- 
-	<!-- Customized Stickers -->
-    <record id="action_stickers_customized_list" model="ir.actions.act_window">
-        <field name="name">Customized Stickers</field>
-        <field name="res_model">stickers.customized</field>
-        <field name="view_mode">tree,form</field>
-        <!-- Podrías añadir search si lo defines: "tree,form,search" -->
-    </record>
 
-    <!-- Materials -->
-    <record id="action_stickers_material_list" model="ir.actions.act_window">
-        <field name="name">Materials</field>
-        <field name="res_model">stickers.material</field>
-        <field name="view_mode">tree,form</field>
-    </record>
+
 
     <!-- Shapes -->
     <record id="action_stickers_shape_list" model="ir.actions.act_window">
