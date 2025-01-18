@@ -2,16 +2,41 @@
 <odoo>
 
  <record id="action_stickers_customized_list" model="ir.actions.act_window">
-    <field name="name">Customized Stickers</field>
-    <field name="res_model">stickers.customized</field>
-    <field name="view_mode">tree,form</field>
-</record>
+        <field name="name">Customized Stickers</field>
+        <field name="res_model">stickers.customized</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-<record id="action_stickers_material_list" model="ir.actions.act_window">
-    <field name="name">Materials</field>
-    <field name="res_model">stickers.material</field>
-    <field name="view_mode">tree,form</field>
-</record>
+    <record id="action_stickers_material_list" model="ir.actions.act_window">
+        <field name="name">Materials</field>
+        <field name="res_model">stickers.material</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ACCIONES que faltan: shape, color, scale, printing -->
+    <record id="action_stickers_shape_list" model="ir.actions.act_window">
+        <field name="name">Shapes</field>
+        <field name="res_model">stickers.shape</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_stickers_color_list" model="ir.actions.act_window">
+        <field name="name">Colors</field>
+        <field name="res_model">stickers.color</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_stickers_scale_list" model="ir.actions.act_window">
+        <field name="name">Scales</field>
+        <field name="res_model">stickers.scale</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_stickers_printing_list" model="ir.actions.act_window">
+        <field name="name">Printing Types</field>
+        <field name="res_model">stickers.printing</field>
+        <field name="view_mode">tree,form</field>
+    </record>
   <menuitem
         name="Stickers Management"
         id="menu_stickers_root"
