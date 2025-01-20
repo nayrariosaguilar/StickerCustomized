@@ -2,47 +2,57 @@
 
 from odoo import models, fields, api
 
-# Table for materials
 class StickersMaterial(models.Model):
-    """Material used for stickers"""
     _name = 'stickers.material'
     _description = "Materials for stickers"
-
     name = fields.Char(string="Material Name", size=255, required=True, help="Name of the material")
-    material_type = fields.Char(string="Material Type", size=255, required=True, help="Type of the material")
 
-
-# Table for shapes
 class StickersShape(models.Model):
-    """Shape of the sticker"""
-    _name = 'stickers.shape'
-    _description = "Shapes available for stickers"
+        _name = 'stickers.shape'
+        _description = "Shapes available for stickers"
+        name = fields.Selection(
+            [("1", "Rectangle"), ("2", "Square"), ("3", "Circle"), ("4", "Star"), ("5", "Triangle"), ],
+            string="Selection")
 
-    name = fields.Char(string="Shape Name", size=255, required=True, help="Name of the shape")
-
-
-# Table for colors
 class StickersColor(models.Model):
-    """Color options for stickers"""
     _name = 'stickers.color'
     _description = "Colors available for stickers"
+    color_name = fields.Char(string="Color Name", size=255, required=True, help="Name of the color", default="Blanco")
 
-    color_name = fields.Char(string="Color Name", size=255, required=True, help="Name of the color")
+class ColorCategory(models.Model):
+    _name = 'stickers.color.category'
+    _description = "Categories available for colors"
+    category_name = fields.Selection(
+        [
+            ('1', 'Rojos y Rosas'),
+            ('2', 'Naranjas'),
+            ('3', 'Amarillos'),
+            ('4', 'Verdes'),
+            ('5', 'Azules'),
+            ('6', 'Morados y Violetas'),
+            ('7', 'Marrones'),
+            ('8', 'Grises y Neutros'),
+            ('9', 'Negros'),
+            ('10', 'Blancos'),
+        ],
+        string="Finish Type",
+        required=True,
+        help="Select the type of finish of your sticker"
+    )
+    id_color = fields.Many2one(
+        'stickers.color',
+        string="Color of the Sticker",
+        help="Choose the color of the Sticker"
+    )
 
-
-# Table for scales
 class StickersScale(models.Model):
-    """Scales available for stickers"""
     _name = 'stickers.scale'
     _description = "Scales available for stickers"
-
     name = fields.Char(string="Scale Name", size=255, required=True, help="Name of the scale")
-
 
 class StickersPrinting(models.Model):
     _name = 'stickers.printing'
     _description = "Printing types available for stickers"
-
     name = fields.Selection(
         [
             ('glossy', 'Glossy'),
@@ -56,9 +66,8 @@ class StickersPrinting(models.Model):
         help="Select the type of finish of your sticker"
     )
 
-# Table for customized stickers
+
 class StickersCustomized(models.Model):
-    """Customized sticker details"""
     _name = 'stickers.customized'
     _description = "Details of customized stickers"
 
@@ -97,6 +106,7 @@ class StickersCustomized(models.Model):
         required=True,
         help="Width of the sticker"
     )
+
     height = fields.Integer(
         string="Height",
         required=True,
