@@ -155,7 +155,7 @@
                         <field name="height"/>
                         <field name="message_personalized"/>
                         <field name="image_personalized"/>
-                        <!-- etc. -->
+
                     </group>
                 </sheet>
             </form>

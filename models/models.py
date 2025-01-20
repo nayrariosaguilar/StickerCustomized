@@ -39,14 +39,22 @@ class StickersScale(models.Model):
     name = fields.Char(string="Scale Name", size=255, required=True, help="Name of the scale")
 
 
-# Table for printing types
 class StickersPrinting(models.Model):
-    """Printing types for stickers"""
     _name = 'stickers.printing'
     _description = "Printing types available for stickers"
 
-    name = fields.Char(string="Printing Type", size=255, required=True, help="Type of printing")
-
+    name = fields.Selection(
+        [
+            ('glossy', 'Glossy'),
+            ('matte', 'Matte'),
+            ('transparent', 'Transparent'),
+            ('embossed', 'Embossed'),
+            ('holographic', 'Holographic'),
+        ],
+        string="Finish Type",
+        required=True,
+        help="Select the type of finish of your sticker"
+    )
 
 # Table for customized stickers
 class StickersCustomized(models.Model):
