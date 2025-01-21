@@ -22,6 +22,13 @@ name = fields.Char(
     help="Name of the shape"
 )
 
+def name_get(self):
+    result = []
+    for record in self:
+        # Combina el id y el nombre, o solo el nombre
+        result.append((record.id, record.name))
+    return result
+
 class StickersColor(models.Model):
     _name = 'stickers.color'
     _description = "Colors available for stickers"
@@ -62,6 +69,13 @@ class StickersScale(models.Model):
         help="Name of the scale"
     )
 
+    def name_get(self):
+        """Generic name_get method for models with a 'name' field."""
+        result = []
+        for record in self:
+            result.append((record.id, record.name))
+        return result
+
 
 class StickersPrinting(models.Model):
     _name = 'stickers.printing'
@@ -72,6 +86,13 @@ class StickersPrinting(models.Model):
         required=True,
         help="Name of the scale"
     )
+
+    def name_get(self):
+        """Generic name_get method for models with a 'name' field."""
+        result = []
+        for record in self:
+            result.append((record.id, record.name))
+        return result
 
 
 class StickersCustomized(models.Model):
