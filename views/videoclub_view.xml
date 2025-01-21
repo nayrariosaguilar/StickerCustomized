@@ -146,11 +146,11 @@
         <form string="Customized Sticker">
             <sheet>
                 <group>
-                    <field name="category_filter_color" string="Color Category"/>
-                    <field name="id_color" string="Colors"/>
+                    <field name="category_filter_color" string="Color Category" />
+                    <field name="id_color" string="Colors"  />
                     <field name="id_finish" string="Printing Type"/>
-                    <field name="id_scale" string="Scale"/>
-                    <field name="id_shape" string="Shape"/>
+                    <field name="id_scale" string="Scale" widget="selection"/>
+                    <field name="id_shape" string="Shape" widget="selection"/>
                     <field name="id_material" string="Materials"/>
                     <field name="width"/>
                     <field name="height"/>
