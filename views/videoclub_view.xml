@@ -139,27 +139,28 @@
     </record>
 
     <!-- (2) Vista form para stickers.customized -->
-    <record id="view_stickers_customized_form" model="ir.ui.view">
-        <field name="name">stickers.customized.form</field>
-        <field name="model">stickers.customized</field>
-        <field name="arch" type="xml">
-            <form string="Customized Sticker">
-                <sheet>
-                    <group>
-                        <field name="id_finish"/>
-                        <field name="id_color"/>
-                        <field name="id_scale"/>
-                        <field name="id_shape"/>
-                        <field name="id_material"/>
-                        <field name="width"/>
-                        <field name="height"/>
-                        <field name="message_personalized"/>
-                        <field name="image_personalized"/>
+   <record id="view_stickers_customized_form" model="ir.ui.view">
+    <field name="name">stickers.customized.form</field>
+    <field name="model">stickers.customized</field>
+    <field name="arch" type="xml">
+        <form string="Customized Sticker">
+            <sheet>
+                <group>
+                    <field name="category_filter_color" string="Color Category"/>
+                    <field name="id_color" string="Colors"/>
+                    <field name="id_finish" string="Printing Type"/>
+                    <field name="id_scale" string="Scale"/>
+                    <field name="id_shape" string="Shape"/>
+                    <field name="id_material" string="Materials"/>
+                    <field name="width"/>
+                    <field name="height"/>
+                    <field name="message_personalized"/>
+                    <field name="image_personalized"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
 
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
 
 </odoo>
