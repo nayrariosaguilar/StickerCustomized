@@ -3,7 +3,6 @@ from odoo import models, fields, api
 class StickersMaterial(models.Model):
     _name = 'stickers.material'
     _description = "Materials for stickers"
-
     name = fields.Char(
         string="Material Name",
         size=50,
@@ -16,19 +15,12 @@ class StickersShape(models.Model):
     _name = 'stickers.shape'
     _description = "Shapes available for stickers"
 
-    name = fields.Selection(
-        [
-            ("1", "Rectangle"),
-            ("2", "Square"),
-            ("3", "Circle"),
-            ("4", "Star"),
-            ("5", "Triangle"),
-        ],
-        string="Shape",
-        required=True,
-        help="Available shapes for stickers"
-    )
-
+name = fields.Char(
+    string="Shape",
+    size=20,
+    required=True,
+    help="Name of the shape"
+)
 
 class StickersColor(models.Model):
     _name = 'stickers.color'
@@ -63,10 +55,9 @@ class StickersColor(models.Model):
 class StickersScale(models.Model):
     _name = 'stickers.scale'
     _description = "Scales available for stickers"
-
     name = fields.Char(
         string="Scale Name",
-        size=255,
+        size=11,
         required=True,
         help="Name of the scale"
     )
@@ -75,18 +66,11 @@ class StickersScale(models.Model):
 class StickersPrinting(models.Model):
     _name = 'stickers.printing'
     _description = "Printing types available for stickers"
-
-    name = fields.Selection(
-        [
-            ('1', 'Glossy'),
-            ('2', 'Matte'),
-            ('3', 'Transparent'),
-            ('4', 'Embossed'),
-            ('5', 'Holographic'),
-        ],
-        string="Printing Type",
+    name = fields.Char(
+        string="Scale Name",
+        size=30,
         required=True,
-        help="Select the type of printing for the sticker"
+        help="Name of the scale"
     )
 
 
