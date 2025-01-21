@@ -59,8 +59,8 @@
     </record>
 
     <!-- Demo data for stickers.scale -->
-    <record id="scale_centimetros" model="stickers.scale">
-        <field name="name">centimetros</field>
+    <record id="scale_centimetres" model="stickers.scale">
+        <field name="name">centimetres</field>
     </record>
     <record id="scale_metros" model="stickers.scale">
         <field name="name">metros</field>
@@ -94,13 +94,12 @@
     <!-- Demo data for stickers.customized -->
     <record id="customized_sticker_1" model="stickers.customized">
         <field name="id_finish" ref="printing_glossy"/>
-        <field name="id_scale" ref="scale_small"/>
+        <field name="id_scale" ref="scale_centimetres"/>
         <field name="id_shape" ref="shape_rectangle"/>
         <field name="id_material" eval="[(6, 0, [ref('material_vinyl'), ref('material_paper')])]"/>
         <field name="id_color" eval="[(6, 0, [ref('color_red'), ref('color_blue')])]"/>
         <field name="width">200</field>
         <field name="height">100</field>
         <field name="message_personalized">Custom sticker message</field>
-
     </record>
 </odoo>

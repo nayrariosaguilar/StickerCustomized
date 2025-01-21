@@ -148,10 +148,10 @@
                 <group>
                     <field name="category_filter_color" string="Color Category" />
                     <field name="id_color" string="Colors"  />
-                    <field name="id_finish" string="Printing Type"/>
+                    <field name="id_finish" string="Printing Type" widget="selection"/>
                     <field name="id_scale" string="Scale" widget="selection"/>
                     <field name="id_shape" string="Shape" widget="selection"/>
-                    <field name="id_material" string="Materials"/>
+                    <field name="id_material" string="Materials" widget="selection"/>
                     <field name="width"/>
                     <field name="height"/>
                     <field name="message_personalized"/>
