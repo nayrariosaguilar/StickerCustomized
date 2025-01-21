@@ -101,6 +101,6 @@
         <field name="width">200</field>
         <field name="height">100</field>
         <field name="message_personalized">Custom sticker message</field>
-        <field name="image_personalized">/path/to/image.jpg</field>
+
     </record>
 </odoo>
