@@ -101,10 +101,16 @@
 
 
 
-<tree string="Colors available for stickers">
-     <field name="name">Colors</field>
-     <field name="res_model">stickers.color</field>
-</tree>
+ <record id="view_stickers_color_tree" model="ir.ui.view">
+        <field name="name">stickers.color.tree</field>
+        <field name="model">stickers.color</field>
+        <field name="arch" type="xml">
+            <tree string="Colors">
+                <field name="color_name"/>
+                <field name="category"/>
+            </tree>
+        </field>
+    </record>
 
     <!-- Scales -->
     <record id="action_stickers_scale_list" model="ir.actions.act_window">
