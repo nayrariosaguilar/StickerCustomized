@@ -163,6 +163,17 @@ class StickersCustomized(models.Model):
         string="Colors",
         help="Colors used for the sticker"
     )
+    @api.constrains('width')
+    def _check_width_positive(self):
+        for record in self:
+            if record.width <= 0:
+                raise ValidationError('The width must be greater than zero!')
+
+    @api.constrains('height')
+    def _check_height_positive(self):
+        for record in self:
+            if record.height <= 0:
+                raise ValidationError('The height must be greater than zero!')
 
     @api.onchange('category_filter_color')
     def _onchange_category_filter_color(self):
