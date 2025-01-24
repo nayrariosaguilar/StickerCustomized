@@ -1,20 +1,5 @@
 <odoo>
     <!-- Demo data for stickers.shape -->
-    <record id="shape_rectangle" model="stickers.shape">
-        <field name="name">Rectangle</field>
-    </record>
-    <record id="shape_square" model="stickers.shape">
-        <field name="name">Square</field>
-    </record>
-    <record id="shape_circle" model="stickers.shape">
-        <field name="name">Circle</field>
-    </record>
-    <record id="shape_star" model="stickers.shape">
-        <field name="name">Star</field>
-    </record>
-    <record id="shape_triangle" model="stickers.shape">
-        <field name="name">Triangle</field>
-    </record>
 
     <!-- Demo data for stickers.color -->
     <record id="color_red" model="stickers.color">
@@ -91,15 +76,5 @@
         <field name="name">Paper</field>
     </record>
 
-    <!-- Demo data for stickers.customized -->
-    <record id="customized_sticker_1" model="stickers.customized">
-        <field name="id_finish" ref="printing_glossy"/>
-        <field name="id_scale" ref="scale_centimetres"/>
-        <field name="id_shape" ref="shape_rectangle"/>
-        <field name="id_material" eval="[(6, 0, [ref('material_vinyl'), ref('material_paper')])]"/>
-        <field name="id_color" eval="[(6, 0, [ref('color_red'), ref('color_blue')])]"/>
-        <field name="width">200</field>
-        <field name="height">100</field>
-        <field name="message_personalized">Custom sticker message</field>
-    </record>
+
 </odoo>
