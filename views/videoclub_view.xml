@@ -92,8 +92,6 @@
         action="action_stickers_printing_list"
     />
 
-
-
     <!-- Shapes -->
     <record id="action_stickers_shape_list" model="ir.actions.act_window">
         <field name="name">Shapes</field>
@@ -101,12 +99,12 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Colors -->
-    <record id="action_stickers_color_list" model="ir.actions.act_window">
-        <field name="name">Colors</field>
-        <field name="res_model">stickers.color</field>
-        <field name="view_mode">tree,form</field>
-    </record>
+
+
+<tree string="Colors available for stickers">
+     <field name="name">Colors</field>
+     <field name="res_model">stickers.color</field>
+</tree>
 
     <!-- Scales -->
     <record id="action_stickers_scale_list" model="ir.actions.act_window">
@@ -121,7 +119,6 @@
         <field name="res_model">stickers.printing</field>
         <field name="view_mode">tree,form</field>
     </record>
-
 
     <!-- (1) Vista tree para stickers.customized -->
     <record id="view_stickers_customized_tree" model="ir.ui.view">
@@ -161,6 +158,5 @@
         </form>
     </field>
 </record>
-
 
 </odoo>
