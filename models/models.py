@@ -57,6 +57,9 @@ class StickersColor(models.Model):
         required=True,
         help="Category to which this color belongs"
     )
+_sql_constraints = [
+    ('unique_material_name', 'UNIQUE(color_name)', 'The color name must be unique'),
+]
 
 
 class StickersScale(models.Model):
