@@ -147,7 +147,7 @@
             <sheet>
                 <group>
                     <field name="category_filter_color" string="Color Category" />
-                    <field name="color_name" string="Colors"  />
+                    <field name="id_color" string="Colors"  />
                     <field name="id_finish" string="Printing Type" widget="selection"/>
                     <field name="id_scale" string="Scale" widget="selection"/>
                     <field name="id_shape" string="Shape" widget="selection"/>
