@@ -41,7 +41,6 @@
         name="Stickers Management"
         id="menu_stickers_root"
         sequence="49"
-        web_icon="StickerCustomized,static/description/sticker.png"
     />
 
     <!-- Submenú para Customized Stickers -->
@@ -99,8 +98,6 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-
-
  <record id="view_stickers_color_tree" model="ir.ui.view">
         <field name="name">stickers.color.tree</field>
         <field name="model">stickers.color</field>
@@ -110,7 +107,7 @@
                 <field name="category"/>
             </tree>
         </field>
-    </record>
+ </record>
 
     <!-- Scales -->
     <record id="action_stickers_scale_list" model="ir.actions.act_window">
@@ -150,7 +147,7 @@
             <sheet>
                 <group>
                     <field name="category_filter_color" string="Color Category" />
-                    <field name="id_color" string="Colors"  />
+                    <field name="color_name" string="Colors"  />
                     <field name="id_finish" string="Printing Type" widget="selection"/>
                     <field name="id_scale" string="Scale" widget="selection"/>
                     <field name="id_shape" string="Shape" widget="selection"/>
@@ -164,5 +161,4 @@
         </form>
     </field>
 </record>
-
 </odoo>
