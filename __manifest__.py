@@ -17,7 +17,7 @@
     # for the full list
     'category': 'Uncategorized',
     'version': '0.1',
-    'icon': '/stickers_customization/static/description/icon.png',
+    'icon': '~/static/description/icon.png',
     # any module necessary for this one to work correctly
     'depends': ['base','sale','product'],
 
