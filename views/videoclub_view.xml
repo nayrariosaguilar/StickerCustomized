@@ -86,8 +86,8 @@
                                 <field name="width"/>
                                 <field name="height"/>
                                 <field name="id_material" string="Materials" widget="many2many_tags"/>
-                                <field name="id_color" widget="colorpicker" options="{'color_field': 'color'}"/>
-                            </group>
+                             <field name="id_color" widget="many2many_tags" options="{'color_field': 'color', 'create': True}"/>
+                          </group>
                         </page>
                     </notebook>
                 </sheet>
