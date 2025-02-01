@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_material,access_material,model_material,base.group_user,1,1,1,1
+access_stickers_customized	access_stickers_customized	model_stickers_customized	base.group_user	1	1	1	1
+

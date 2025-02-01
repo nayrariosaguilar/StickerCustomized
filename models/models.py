@@ -3,7 +3,7 @@ from odoo.exceptions import ValidationError
 
 
 class Material(models.Model):
-    _name = 'material'
+    _name = 'stickers.material'
     _description = 'Materiales para fabricación de stickers'
 
     product_template_id = fields.Many2one(
@@ -63,4 +63,51 @@ class Material(models.Model):
                 raise ValidationError(f"No hay suficiente stock de {material.nombre} en m².")
 
             material.product_template_id.qty_available -= cantidad_m2  # Restar del stock real en Odoo
+
+class StickersCustomized(models.Model):
+    _name = 'stickers.customized'
+    _description = "Details of customized stickers"
+
+    id_material = fields.Many2many(
+        'stickers.material',
+        string="Materials",
+        help="Materials used for the sticker"
+    )
+    id_product = fields.Many2one(
+        'product.product',
+        string="Product",
+        help="Product associated with the sticker"
+    )
+    width = fields.Integer(
+        string="Width",
+        required=True,
+        help="Width of the sticker"
+    )
+    height = fields.Integer(
+        string="Height",
+        required=True,
+        help="Height of the sticker"
+    )
+
+    image_personalized = fields.Image(
+        string="Image",
+        help="Upload an image for your sticker"
+    )
+
+    id_color = fields.Many2many(
+        'stickers.color',
+        string="Colors",
+        help="Colors used for the sticker"
+    )
+    @api.constrains('width')
+    def _check_width_positive(self):
+        for record in self:
+            if record.width <= 0:
+                raise ValidationError('The width must be greater than zero!')
+
+    @api.constrains('height')
+    def _check_height_positive(self):
+        for record in self:
+            if record.height <= 0:
+                raise ValidationError('The height must be greater than zero!')
 
