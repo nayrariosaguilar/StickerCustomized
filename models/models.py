@@ -10,7 +10,7 @@ class Material(models.Model):
         'product.template',
         string="Material",
         required=True,
-        ondelete='set null'
+        ondelete='cascade'
     )
 
     # Solo dos categorías: Material Base o Tinta
