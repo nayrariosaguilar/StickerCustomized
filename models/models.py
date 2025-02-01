@@ -73,11 +73,7 @@ class StickersCustomized(models.Model):
         string="Materials",
         help="Materials used for the sticker"
     )
-    id_product = fields.Many2one(
-        'product.product',
-        string="Product",
-        help="Product associated with the sticker"
-    )
+
     width = fields.Integer(
         string="Width",
         required=True,
@@ -94,10 +90,11 @@ class StickersCustomized(models.Model):
         help="Upload an image for your sticker"
     )
 
-    id_color = fields.Many2many(
+    id_color = fields.Many2one(
         'product.attribute.value',
-        string="Colores",
-        help="Colores utilizados para el sticker"
+        string="Color",
+        domain="[('attribute_id.display_type', '=', 'color')]",
+        help="Select a color for the sticker"
     )
     @api.constrains('width')
     def _check_width_positive(self):

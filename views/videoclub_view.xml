@@ -82,16 +82,11 @@
                     <notebook>
                         <page string="Detalles del Sticker">
                             <group>
-                                <field name="id_product"/>
                                 <field name="image_personalized" widget="image"/>
                                 <field name="width"/>
                                 <field name="height"/>
-                            </group>
-                        </page>
-                        <page string="Materiales y Colores">
-                            <group>
-                                <field name="id_material" widget="many2many_tags"/>
-                                <field name="id_color" widget="many2many_tags"/>
+                                <field name="id_material" string="Materials" widget="many2many_tags"/>
+                                <field name="id_color" widget="colorpicker" options="{'color_field': 'color'}"/>
                             </group>
                         </page>
                     </notebook>
