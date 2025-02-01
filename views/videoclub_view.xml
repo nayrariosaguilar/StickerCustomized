@@ -9,13 +9,7 @@
     </record>
 
     <!-- Menú para Materials (Dentro del menú de Productos) -->
-    <menuitem
-        name="Materials"
-        id="menu_stickers_material"
-        parent="product.menu_catalog"
-        sequence="60"
-        action="action_stickers_material_list"
-    />
+
 
     <!-- Herencia de la Vista de Product Template -->
     <record id="view_material_product_template_form" model="ir.ui.view">
