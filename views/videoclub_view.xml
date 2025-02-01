@@ -21,7 +21,6 @@
             <!-- Agregar los campos de Material en la pestaña de "Inventario" -->
             <xpath expr="//sheet" position="inside">
             <group string="Información de Material">
-                <field name="tipo_material"/>  <!-- Este campo ahora existe en 'material' -->
                 <field name="categoria_material"/>
                 <field name="proveedor_principal_id"/>
                 <field name="costo_por_unidad"/>

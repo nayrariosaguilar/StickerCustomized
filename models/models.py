@@ -68,3 +68,4 @@ class Material(models.Model):
                 raise ValidationError(f"No hay suficiente stock de {material.nombre} en m².")
 
             material.product_template_id.qty_available -= cantidad_m2  # Restar del stock real en Odoo
+
