@@ -9,12 +9,10 @@ class Material(models.Model):
 
     product_template_id = fields.Many2one(
         'product.template',
-        string="Plantilla de producto asociada",
+        string="Material",
         required=True,
         ondelete='cascade'
     )
-
-    nombre = fields.Char(string="Nombre del material", required=True)
 
     # Solo dos categorías: Material Base o Tinta
     categoria_material = fields.Selection(
