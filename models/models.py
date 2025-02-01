@@ -5,13 +5,12 @@ from odoo.exceptions import ValidationError
 class Material(models.Model):
     _name = 'material'
     _description = 'Materiales para fabricación de stickers'
-    _inherits = {'product.template': 'product_template_id'}
 
     product_template_id = fields.Many2one(
         'product.template',
         string="Material",
         required=True,
-        ondelete='cascade'
+        ondelete='set null'
     )
 
     # Solo dos categorías: Material Base o Tinta
@@ -25,20 +24,18 @@ class Material(models.Model):
     costo_por_unidad = fields.Float(string="Costo por unidad", help="Costo unitario del material")
     especificaciones_tecnicas = fields.Text(string="Especificaciones técnicas")
     fecha_ultima_compra = fields.Date(string="Fecha de última compra")
-    ubicacion_almacen = fields.Char(string="Ubicación en almacén")
 
     # Cantidad disponible en stock (obtenida de product.template)
+
     cantidad_disponible = fields.Float(
-        string="Cantidad disponible",
+        string="Cantidad disponible (m²)",
         compute="_compute_cantidad_disponible",
         store=True
     )
-
-    # Se mantiene solo m² como unidad, sin conversión en este modelo
-    cantidad_en_m2 = fields.Float(
-        string="Cantidad en m²",
-        compute="_compute_cantidad_m2",
-        store=True
+    image_1920 = fields.Image(
+        string="Imagen del material",
+        related="product_template_id.image_1920",
+        readonly=False  # Permitir cambiar la imagen desde aquí
     )
 
     @api.depends('product_template_id.qty_available')
