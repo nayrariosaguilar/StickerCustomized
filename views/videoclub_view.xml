@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Acción de Ventana para Stickers Customized -->
+    <record id="action_stickers_customized_list" model="ir.actions.act_window">
+        <field name="name">Customized Stickers</field>
+        <field name="res_model">stickers.customized</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- Acción de Ventana para Materials -->
     <record id="action_stickers_material_list" model="ir.actions.act_window">
         <field name="name">Materials</field>
-        <field name="res_model">material</field>  <!-- Corregido si el modelo es 'material' -->
+        <field name="res_model">stickers.material</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Menú para Materials (Dentro del menú de Productos) -->
-    <menuitem
-        id="menu_sticker_customized_root"
-        name="Sticker App"
-        sequence="1"
-    />
+    <!-- Menú raíz para Sticker App -->
+    <menuitem id="menu_sticker_customized_root" name="Sticker App" sequence="1"/>
 
+    <!-- Menú de Materials -->
     <menuitem
         id="menu_sticker_material"
         name="Materials"
@@ -23,30 +26,77 @@
         action="action_stickers_material_list"
     />
 
+    <!-- Menú de Stickers Personalizados -->
+    <menuitem
+        name="Customized Stickers"
+        id="menu_stickers_customized"
+        parent="menu_sticker_customized_root"
+        sequence="3"
+        action="action_stickers_customized_list"
+    />
 
+    <!-- Vista de Formulario para Materiales -->
     <record id="view_material_form" model="ir.ui.view">
-    <field name="name">material.form</field>
-    <field name="model">material</field>
-    <field name="arch" type="xml">
-        <form string="Material">
-            <sheet>
-                <group>
-                   <field name="categoria_material"/>
-                </group>
-                <group string="Detalles de inventario">
-                    <field name="product_template_id" string="Material"/>
-                    <field name="cantidad_disponible" readonly="1" widget="float" string="Cantidad disponible (m²)"/>
-                    <field name="image_1920" widget="image" string="Imagen del material"/>
-                     <field name="fecha_ultima_compra"/>
+        <field name="name">stickers.material.form</field>
+        <field name="model">stickers.material</field>
+        <field name="arch" type="xml">
+            <form string="Material">
+                <sheet>
+                    <notebook>
+                        <!-- Pestaña de Información Básica -->
+                        <page string="Información General">
+                            <group>
+                                <field name="product_template_id" string="Material"/>
+                                <field name="categoria_material"/>
+                                <field name="cantidad_disponible" readonly="1" widget="float" string="Cantidad disponible (m²)"/>
+                                <field name="image_1920" widget="image" string="Imagen del material"/>
+                            </group>
+                        </page>
+                        <!-- Pestaña de Proveedor -->
+                        <page string="Proveedor">
+                            <group>
+                                <field name="proveedor_principal_id"/>
+                                <field name="costo_por_unidad"/>
+                                <field name="fecha_ultima_compra"/>
+                            </group>
+                        </page>
+                        <!-- Pestaña de Especificaciones Técnicas -->
+                        <page string="Especificaciones Técnicas">
+                            <group>
+                                <field name="especificaciones_tecnicas"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-                <field name="proveedor_principal_id"/>
-                <field name="costo_por_unidad"/>
-                <field name="especificaciones_tecnicas"/>
-                </group>
-            </sheet>
-        </form>
-    </field>
-</record>
-
-
+    <!-- Vista de Formulario para Stickers Personalizados -->
+    <record id="view_stickers_customized_form" model="ir.ui.view">
+        <field name="name">stickers.customized.form</field>
+        <field name="model">stickers.customized</field>
+        <field name="arch" type="xml">
+            <form string="Customized Sticker">
+                <sheet>
+                    <notebook>
+                        <page string="Detalles del Sticker">
+                            <group>
+                                <field name="id_product"/>
+                                <field name="image_personalized" widget="image"/>
+                                <field name="width"/>
+                                <field name="height"/>
+                            </group>
+                        </page>
+                        <page string="Materiales y Colores">
+                            <group>
+                                <field name="id_material" widget="many2many_tags"/>
+                                <field name="id_color" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 </odoo>

@@ -95,9 +95,9 @@ class StickersCustomized(models.Model):
     )
 
     id_color = fields.Many2many(
-        'stickers.color',
-        string="Colors",
-        help="Colors used for the sticker"
+        'product.attribute.value',
+        string="Colores",
+        help="Colores utilizados para el sticker"
     )
     @api.constrains('width')
     def _check_width_positive(self):
