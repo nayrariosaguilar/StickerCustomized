@@ -1,12 +1,6 @@
 <odoo>
 
-    <!-- Demo data for stickers.material -->
-    <record id="material_vinyl" model="stickers.material">
-        <field name="name">Vinyl</field>
-    </record>
-    <record id="material_paper" model="stickers.material">
-        <field name="name">Paper</field>
-    </record>
+
 
 
 </odoo>
