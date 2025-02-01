@@ -1,164 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
- <record id="action_stickers_customized_list" model="ir.actions.act_window">
-        <field name="name">Customized Stickers</field>
-        <field name="res_model">stickers.customized</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
+    <!-- Acción de Ventana para Materials -->
     <record id="action_stickers_material_list" model="ir.actions.act_window">
         <field name="name">Materials</field>
-        <field name="res_model">stickers.material</field>
+        <field name="res_model">material</field>  <!-- Corregido si el modelo es 'material' -->
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- ACCIONES que faltan: shape, color, scale, printing -->
-    <record id="action_stickers_shape_list" model="ir.actions.act_window">
-        <field name="name">Shapes</field>
-        <field name="res_model">stickers.shape</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <record id="action_stickers_color_list" model="ir.actions.act_window">
-        <field name="name">Colors</field>
-        <field name="res_model">stickers.color</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <record id="action_stickers_scale_list" model="ir.actions.act_window">
-        <field name="name">Scales</field>
-        <field name="res_model">stickers.scale</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <record id="action_stickers_printing_list" model="ir.actions.act_window">
-        <field name="name">Printing Types</field>
-        <field name="res_model">stickers.printing</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-  <menuitem
-        name="Stickers Management"
-        id="menu_stickers_root"
-        sequence="49"
-    />
-
-    <!-- Submenú para Customized Stickers -->
-    <menuitem
-        name="Customized Stickers"
-        id="menu_stickers_customized"
-        parent="menu_stickers_root"
-        sequence="50"
-        action="action_stickers_customized_list"
-    />
-
-    <!-- Submenú para Materials -->
+    <!-- Menú para Materials (Dentro del menú de Productos) -->
     <menuitem
         name="Materials"
         id="menu_stickers_material"
-        parent="menu_stickers_root"
+        parent="product.menu_catalog"
         sequence="60"
         action="action_stickers_material_list"
     />
 
-    <!-- Más submenús para shapes, colors, scales, printing, etc. -->
-    <menuitem
-        name="Shapes"
-        id="menu_stickers_shape"
-        parent="menu_stickers_root"
-        sequence="70"
-        action="action_stickers_shape_list"
-    />
-    <menuitem
-        name="Colors"
-        id="menu_stickers_color"
-        parent="menu_stickers_root"
-        sequence="80"
-        action="action_stickers_color_list"
-    />
-    <menuitem
-        name="Scales"
-        id="menu_stickers_scale"
-        parent="menu_stickers_root"
-        sequence="90"
-        action="action_stickers_scale_list"
-    />
-    <menuitem
-        name="Printing Types"
-        id="menu_stickers_printing"
-        parent="menu_stickers_root"
-        sequence="100"
-        action="action_stickers_printing_list"
-    />
-
-    <!-- Shapes -->
-    <record id="action_stickers_shape_list" model="ir.actions.act_window">
-        <field name="name">Shapes</field>
-        <field name="res_model">stickers.shape</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
- <record id="view_stickers_color_tree" model="ir.ui.view">
-        <field name="name">stickers.color.tree</field>
-        <field name="model">stickers.color</field>
+    <!-- Herencia de la Vista de Product Template -->
+    <record id="view_material_product_template_form" model="ir.ui.view">
+        <field name="name">material.product.template.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/> <!-- Verificar ID correcto -->
         <field name="arch" type="xml">
-            <tree string="Colors">
-                <field name="color_name"/>
-                <field name="category"/>
-            </tree>
-        </field>
- </record>
 
-    <!-- Scales -->
-    <record id="action_stickers_scale_list" model="ir.actions.act_window">
-        <field name="name">Scales</field>
-        <field name="res_model">stickers.scale</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <!-- Printing Types -->
-    <record id="action_stickers_printing_list" model="ir.actions.act_window">
-        <field name="name">Printing Types</field>
-        <field name="res_model">stickers.printing</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <!-- (1) Vista tree para stickers.customized -->
-    <record id="view_stickers_customized_tree" model="ir.ui.view">
-        <field name="name">stickers.customized.tree</field>
-        <field name="model">stickers.customized</field>
-        <field name="arch" type="xml">
-            <tree string="Customized Stickers">
-                <field name="id_shape"/>
-                <field name="id_scale"/>
-                <field name="width"/>
-                <field name="height"/>
-                <!-- Muestra más campos si quieres -->
-            </tree>
-        </field>
-    </record>
-
-    <!-- (2) Vista form para stickers.customized -->
-   <record id="view_stickers_customized_form" model="ir.ui.view">
-    <field name="name">stickers.customized.form</field>
-    <field name="model">stickers.customized</field>
-    <field name="arch" type="xml">
-        <form string="Customized Sticker">
-            <sheet>
-                <group>
-                    <field name="category_filter_color" string="Color Category" />
-                    <field name="id_color" string="Colors"  />
-                    <field name="id_finish" string="Printing Type" widget="selection"/>
-                    <field name="id_scale" string="Scale" widget="selection"/>
-                    <field name="id_shape" string="Shape" widget="selection"/>
-                    <field name="id_material" string="Materials" widget="selection"/>
-                    <field name="width"/>
-                    <field name="height"/>
-                    <field name="message_personalized"/>
-                    <field name="image_personalized"/>
+            <!-- Agregar los campos de Material en la pestaña de "Inventario" -->
+            <xpath expr="//page[@name='inventory']" position="inside">
+                <group string="Información de Material">
+                    <field name="tipo_material"/>
+                    <field name="proveedor_principal_id"/>
+                    <field name="costo_por_unidad"/>
+                    <field name="especificaciones_tecnicas"/>
+                    <field name="fecha_ultima_compra"/>
+                    <field name="cantidad_disponible" readonly="1"/>
+                    <field name="unidad_medida"/>
+                    <field name="cantidad_en_m2" readonly="1"/>
                 </group>
-            </sheet>
-        </form>
-    </field>
-</record>
+            </xpath>
+
+            <!-- Nueva pestaña para escalas (solo para materiales) -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Escala de Conversión" attrs="{'invisible': [('es_material', '=', False)]}">
+                    <group>
+                        <field name="escala_id"/>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
 </odoo>
