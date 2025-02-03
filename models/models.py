@@ -90,7 +90,7 @@ class StickersCustomized(models.Model):
         help="Upload an image for your sticker"
     )
 
-    id_color = fields.Many2one(
+    id_color = fields.Many2many(
         'product.attribute.value',
         string="Color",
         domain="[('attribute_id.display_type', '=', 'color')]",
