@@ -2,7 +2,7 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 
-class Material(models.Model):
+class StickersMaterial(models.Model):
     _name = 'stickers.material'
     _description = 'Materiales para fabricación de stickers'
 
