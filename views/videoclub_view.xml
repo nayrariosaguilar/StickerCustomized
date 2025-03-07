@@ -23,12 +23,6 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="action_stickers_color_list" model="ir.actions.act_window">
-        <field name="name">Colors</field>
-        <field name="res_model">stickers.color</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
     <record id="action_stickers_scale_list" model="ir.actions.act_window">
         <field name="name">Scales</field>
         <field name="res_model">stickers.scale</field>
@@ -45,8 +39,7 @@
     <menuitem name="Customized Stickers" id="menu_stickers_customized" parent="menu_stickers_root" sequence="10" action="action_stickers_customized_list"/>
     <menuitem name="Materials" id="menu_stickers_material" parent="menu_stickers_root" sequence="20" action="action_stickers_material_list"/>
     <menuitem name="Shapes" id="menu_stickers_shape" parent="menu_stickers_root" sequence="30" action="action_stickers_shape_list"/>
-    <menuitem name="Colors" id="menu_stickers_color" parent="menu_stickers_root" sequence="40" action="action_stickers_color_list"/>
-    <menuitem name="Scales" id="menu_stickers_scale" parent="menu_stickers_root" sequence="50" action="action_stickers_scale_list"/>
+   <menuitem name="Scales" id="menu_stickers_scale" parent="menu_stickers_root" sequence="50" action="action_stickers_scale_list"/>
     <menuitem name="Printing Types" id="menu_stickers_printing" parent="menu_stickers_root" sequence="60" action="action_stickers_printing_list"/>
 
     <!-- Vista tree para stickers.customized -->
@@ -150,34 +143,6 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <!-- Vista tree para stickers.color -->
-    <record id="view_stickers_color_tree" model="ir.ui.view">
-        <field name="name">stickers.color.tree</field>
-        <field name="model">stickers.color</field>
-        <field name="arch" type="xml">
-            <tree string="Colors">
-                <field name="color_name"/>
-                <field name="category"/>
-            </tree>
-        </field>
-    </record>
-
-    <!-- Vista form para stickers.color -->
-    <record id="view_stickers_color_form" model="ir.ui.view">
-        <field name="name">stickers.color.form</field>
-        <field name="model">stickers.color</field>
-        <field name="arch" type="xml">
-            <form string="Color">
-                <sheet>
-                    <group>
-                        <field name="color_name"/>
-                        <field name="category"/>
                     </group>
                 </sheet>
             </form>
