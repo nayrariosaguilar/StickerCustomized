@@ -27,7 +27,11 @@
 	'views/videoclub_view.xml',
     ],
     # only loaded in demonstration mode
-    'demo': ['demo/demo.xml'],
+    'demo': [
+    'demo/printing_data.xml',
+    'demo/scale_data.xml',
+    'demo/shape_data.xml',
+],
     'installable': True,
     'application': True,
     'autoinstall': False,
