@@ -116,16 +116,18 @@ class StickersCustomized(models.Model):
 
     @api.model
     def create(self, vals):
-        """ Si no se proporciona un id_product, crea un producto automáticamente """
-        if 'id_product' not in vals or not vals['id_product']:
-            new_product = self.env['product.product'].create({
-                'name': vals.get('name', 'Sticker sin Nombre'),  # Usa 'name' si está en vals, sino un valor por defecto
-                'type': 'consu',  # Producto consumible como en tu ejemplo original
-                'list_price': 0.0,  # Precio por defecto, ajusta si tienes un campo para precio
-            })
-            vals['id_product'] = new_product.id  # Asigna el nuevo producto al campo id_product
+         # Crear la bamba
+        sticker = super(StickersCustomized, self).create(vals)
 
-        return super(StickersCustomized, self).create(vals)
+        product = self.env['product.product'].create({
+             'name': f"Sticker: {sticker.name}",
+             'type': 'consu',
+             'list_price': 0,
+             'default_code': f"Sticker-{sticker.id}",
+         })
+
+        sticker.product_id = product.id
+        return sticker
 
     @api.constrains('width')
     def _check_width_positive(self):
