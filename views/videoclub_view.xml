@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
- <record id="action_stickers_customized_list" model="ir.actions.act_window">
+    <!-- Menú principal -->
+    <menuitem name="Stickers Management" id="menu_stickers_root" sequence="10"/>
+
+    <!-- Acciones de ventana -->
+    <record id="action_stickers_customized_list" model="ir.actions.act_window">
         <field name="name">Customized Stickers</field>
         <field name="res_model">stickers.customized</field>
         <field name="view_mode">tree,form</field>
@@ -13,7 +17,6 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- ACCIONES que faltan: shape, color, scale, printing -->
     <record id="action_stickers_shape_list" model="ir.actions.act_window">
         <field name="name">Shapes</field>
         <field name="res_model">stickers.shape</field>
@@ -37,93 +40,16 @@
         <field name="res_model">stickers.printing</field>
         <field name="view_mode">tree,form</field>
     </record>
-  <menuitem
-        name="Stickers Management"
-        id="menu_stickers_root"
-        sequence="49"
-    />
 
-    <!-- Submenú para Customized Stickers -->
-    <menuitem
-        name="Customized Stickers"
-        id="menu_stickers_customized"
-        parent="menu_stickers_root"
-        sequence="50"
-        action="action_stickers_customized_list"
-    />
+    <!-- Submenús -->
+    <menuitem name="Customized Stickers" id="menu_stickers_customized" parent="menu_stickers_root" sequence="10" action="action_stickers_customized_list"/>
+    <menuitem name="Materials" id="menu_stickers_material" parent="menu_stickers_root" sequence="20" action="action_stickers_material_list"/>
+    <menuitem name="Shapes" id="menu_stickers_shape" parent="menu_stickers_root" sequence="30" action="action_stickers_shape_list"/>
+    <menuitem name="Colors" id="menu_stickers_color" parent="menu_stickers_root" sequence="40" action="action_stickers_color_list"/>
+    <menuitem name="Scales" id="menu_stickers_scale" parent="menu_stickers_root" sequence="50" action="action_stickers_scale_list"/>
+    <menuitem name="Printing Types" id="menu_stickers_printing" parent="menu_stickers_root" sequence="60" action="action_stickers_printing_list"/>
 
-    <!-- Submenú para Materials -->
-    <menuitem
-        name="Materials"
-        id="menu_stickers_material"
-        parent="menu_stickers_root"
-        sequence="60"
-        action="action_stickers_material_list"
-    />
-
-    <!-- Más submenús para shapes, colors, scales, printing, etc. -->
-    <menuitem
-        name="Shapes"
-        id="menu_stickers_shape"
-        parent="menu_stickers_root"
-        sequence="70"
-        action="action_stickers_shape_list"
-    />
-    <menuitem
-        name="Colors"
-        id="menu_stickers_color"
-        parent="menu_stickers_root"
-        sequence="80"
-        action="action_stickers_color_list"
-    />
-    <menuitem
-        name="Scales"
-        id="menu_stickers_scale"
-        parent="menu_stickers_root"
-        sequence="90"
-        action="action_stickers_scale_list"
-    />
-    <menuitem
-        name="Printing Types"
-        id="menu_stickers_printing"
-        parent="menu_stickers_root"
-        sequence="100"
-        action="action_stickers_printing_list"
-    />
-
-    <!-- Shapes -->
-    <record id="action_stickers_shape_list" model="ir.actions.act_window">
-        <field name="name">Shapes</field>
-        <field name="res_model">stickers.shape</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
- <record id="view_stickers_color_tree" model="ir.ui.view">
-        <field name="name">stickers.color.tree</field>
-        <field name="model">stickers.color</field>
-        <field name="arch" type="xml">
-            <tree string="Colors">
-                <field name="color_name"/>
-                <field name="category"/>
-            </tree>
-        </field>
- </record>
-
-    <!-- Scales -->
-    <record id="action_stickers_scale_list" model="ir.actions.act_window">
-        <field name="name">Scales</field>
-        <field name="res_model">stickers.scale</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <!-- Printing Types -->
-    <record id="action_stickers_printing_list" model="ir.actions.act_window">
-        <field name="name">Printing Types</field>
-        <field name="res_model">stickers.printing</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <!-- (1) Vista tree para stickers.customized -->
+    <!-- Vista tree para stickers.customized -->
     <record id="view_stickers_customized_tree" model="ir.ui.view">
         <field name="name">stickers.customized.tree</field>
         <field name="model">stickers.customized</field>
@@ -133,32 +59,181 @@
                 <field name="id_scale"/>
                 <field name="width"/>
                 <field name="height"/>
-                <!-- Muestra más campos si quieres -->
+                <field name="id_finish"/>
+                <field name="id_material" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
 
-    <!-- (2) Vista form para stickers.customized -->
-   <record id="view_stickers_customized_form" model="ir.ui.view">
-    <field name="name">stickers.customized.form</field>
-    <field name="model">stickers.customized</field>
-    <field name="arch" type="xml">
-        <form string="Customized Sticker">
-            <sheet>
-                <group>
-                    <field name="category_filter_color" string="Color Category" />
-                    <field name="id_color" string="Colors"  />
-                    <field name="id_finish" string="Printing Type" widget="selection"/>
-                    <field name="id_scale" string="Scale" widget="selection"/>
-                    <field name="id_shape" string="Shape" widget="selection"/>
-                    <field name="id_material" string="Materials" widget="selection"/>
-                    <field name="width"/>
-                    <field name="height"/>
-                    <field name="message_personalized"/>
-                    <field name="image_personalized"/>
-                </group>
-            </sheet>
-        </form>
-    </field>
-</record>
+    <!-- Vista form para stickers.customized -->
+    <record id="view_stickers_customized_form" model="ir.ui.view">
+        <field name="name">stickers.customized.form</field>
+        <field name="model">stickers.customized</field>
+        <field name="arch" type="xml">
+            <form string="Customized Sticker">
+                <sheet>
+                    <group>
+                        <group string="Design">
+                            <field name="id_shape"/>
+                            <field name="id_scale"/>
+                            <field name="width"/>
+                            <field name="height"/>
+                            <field name="id_color" widget="many2many_tags"/>
+                        </group>
+                        <group string="Materials and Printing">
+                            <field name="id_material" widget="many2many_tags"/>
+                            <field name="id_finish"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Personalization">
+                            <field name="message_personalized"/>
+                            <field name="image_personalized" widget="image"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista tree para stickers.material -->
+    <record id="view_stickers_material_tree" model="ir.ui.view">
+        <field name="name">stickers.material.tree</field>
+        <field name="model">stickers.material</field>
+        <field name="arch" type="xml">
+            <tree string="Materials">
+                <field name="product_template_id"/>
+                <field name="main_supplier_id"/>
+                <field name="cost_unit"/>
+                <field name="stock"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista form para stickers.material -->
+    <record id="view_stickers_material_form" model="ir.ui.view">
+        <field name="name">stickers.material.form</field>
+        <field name="model">stickers.material</field>
+        <field name="arch" type="xml">
+            <form string="Material">
+                <sheet>
+                    <group>
+                        <field name="product_template_id"/>
+                        <field name="main_supplier_id"/>
+                        <field name="cost_unit"/>
+                        <field name="last_purchase_date"/>
+                        <field name="stock"/>
+                        <field name="image_1920" widget="image"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista tree para stickers.shape -->
+    <record id="view_stickers_shape_tree" model="ir.ui.view">
+        <field name="name">stickers.shape.tree</field>
+        <field name="model">stickers.shape</field>
+        <field name="arch" type="xml">
+            <tree string="Shapes">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista form para stickers.shape -->
+    <record id="view_stickers_shape_form" model="ir.ui.view">
+        <field name="name">stickers.shape.form</field>
+        <field name="model">stickers.shape</field>
+        <field name="arch" type="xml">
+            <form string="Shape">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista tree para stickers.color -->
+    <record id="view_stickers_color_tree" model="ir.ui.view">
+        <field name="name">stickers.color.tree</field>
+        <field name="model">stickers.color</field>
+        <field name="arch" type="xml">
+            <tree string="Colors">
+                <field name="color_name"/>
+                <field name="category"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista form para stickers.color -->
+    <record id="view_stickers_color_form" model="ir.ui.view">
+        <field name="name">stickers.color.form</field>
+        <field name="model">stickers.color</field>
+        <field name="arch" type="xml">
+            <form string="Color">
+                <sheet>
+                    <group>
+                        <field name="color_name"/>
+                        <field name="category"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista tree para stickers.scale -->
+    <record id="view_stickers_scale_tree" model="ir.ui.view">
+        <field name="name">stickers.scale.tree</field>
+        <field name="model">stickers.scale</field>
+        <field name="arch" type="xml">
+            <tree string="Scales">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista form para stickers.scale -->
+    <record id="view_stickers_scale_form" model="ir.ui.view">
+        <field name="name">stickers.scale.form</field>
+        <field name="model">stickers.scale</field>
+        <field name="arch" type="xml">
+            <form string="Scale">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista tree para stickers.printing -->
+    <record id="view_stickers_printing_tree" model="ir.ui.view">
+        <field name="name">stickers.printing.tree</field>
+        <field name="model">stickers.printing</field>
+        <field name="arch" type="xml">
+            <tree string="Printing Types">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista form para stickers.printing -->
+    <record id="view_stickers_printing_form" model="ir.ui.view">
+        <field name="name">stickers.printing.form</field>
+        <field name="model">stickers.printing</field>
+        <field name="arch" type="xml">
+            <form string="Printing Type">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
 </odoo>
