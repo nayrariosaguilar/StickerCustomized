@@ -137,3 +137,47 @@ class StickersCustomized(models.Model):
                             'message': f'El material {material.product_template_id.name} tiene pocas existencias ({material.stock} m²)'
                         }
                     }
+
+    @api.model
+    def create(self, vals):
+        """ Si no se proporciona un id_product, crea un producto automáticamente """
+        if 'id_product' not in vals or not vals['id_product']:
+            # Obtener información para el nombre del producto
+            width = vals.get('width', 0)
+            height = vals.get('height', 0)
+
+            # Obtener nombres de los registros relacionados si existen
+            shape_name = ''
+            scale_name = ''
+            printing_name = ''
+
+            if vals.get('id_shape'):
+                shape = self.env['stickers.shape'].browse(vals['id_shape'])
+                if shape:
+                    shape_name = shape.name
+
+            if vals.get('id_scale'):
+                scale = self.env['stickers.scale'].browse(vals['id_scale'])
+                if scale:
+                    scale_name = scale.name
+
+            if vals.get('id_finish'):
+                printing = self.env['stickers.printing'].browse(vals['id_finish'])
+                if printing:
+                    printing_name = printing.name
+
+            # Crear un nombre descriptivo para el producto
+            product_name = f"Sticker personalizado {shape_name} {width}x{height} {scale_name} - {printing_name}"
+
+            # Crear el producto
+            new_product = self.env['product.product'].create({
+                'name': product_name,
+                'type': 'product',  # O 'consu' si prefieres que sea consumible
+                'list_price': 0,  # Puedes calcular un precio basado en dimensiones y materiales
+                'sale_ok': True,
+                'purchase_ok': False,
+            })
+
+            vals['id_product'] = new_product.id  # Asignar el nuevo producto al sticker
+
+        return super(StickersCustomized, self).create(vals)
