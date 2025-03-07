@@ -126,7 +126,7 @@ class StickersCustomized(models.Model):
         sticker = super(StickersCustomized, self).create(vals)
 
         product = self.env['product.product'].create({
-             'name': f"Sticker: {sticker.name}",
+             'name': f": {sticker.name}",
              'type': 'consu',
              'list_price': 0,
              'default_code': f"Sticker-{sticker.id}",
@@ -155,6 +155,6 @@ class StickersCustomized(models.Model):
                     return {
                         'warning': {
                             'title': 'Stock Bajo',
-                            'message': f'El material {material.product_template_id.name} tiene pocas existencias ({material.stock} m²)'
+                            'message': f'El material {material.product_template_id.name} tiene pocas existencias ({material.stock})'
                         }
                     }
