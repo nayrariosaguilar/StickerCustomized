@@ -51,6 +51,7 @@
                 <field name="id_shape"/>
                 <field name="id_scale"/>
                 <field name="width"/>
+                <field name="name"/>
                 <field name="height"/>
                 <field name="id_finish"/>
                 <field name="id_material" widget="many2many_tags"/>
@@ -69,6 +70,7 @@
                         <group string="Design">
                             <field name="id_shape"/>
                             <field name="id_scale"/>
+                            <field name="name"/>
                             <field name="width"/>
                             <field name="height"/>
                             <field name="id_color" widget="many2many_tags"/>

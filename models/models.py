@@ -68,6 +68,12 @@ class StickersMaterial(models.Model):
 class StickersCustomized(models.Model):
     _name = 'stickers.customized'
     _description = "Details of customized stickers"
+
+    name = fields.Char(
+        string="Sticker Name",
+        required=True,
+        help="Name of the sticker"
+    )
     id_finish = fields.Many2one(
         'stickers.printing',
         string="Printing Type",
