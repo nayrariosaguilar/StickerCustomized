@@ -118,21 +118,12 @@ class StickersCustomized(models.Model):
     def create(self, vals):
         """ Si no se proporciona un id_product, crea un producto automáticamente """
         if 'id_product' not in vals or not vals.get('id_product'):
-            # Generar un nombre basado en los campos disponibles en vals
-            shape_name = self.env['stickers.shape'].browse(vals.get('id_shape')).name if vals.get(
-                'id_shape') else 'Sin Forma'
-            width = vals.get('width', 0)
-            height = vals.get('height', 0)
-            scale = self.env['stickers.scale'].browse(vals.get('id_scale')).name if vals.get('id_scale') else 'cm'
-            product_name = f"Sticker {shape_name} {width}x{height} {scale}"
-
-            # Crear el producto automáticamente
             new_product = self.env['product.product'].create({
-                'name': product_name,
-                'type': 'product',  # Cambié 'consu' a 'product' para que sea almacenable, ajusta según necesidad
-                'list_price': 0.0,  # Precio por defecto, puedes calcularlo si tienes un campo precio
+                'name': vals.get('name', 'Sticker sin Nombre'),  # Usa 'name' si está en vals, sino un valor por defecto
+                'type': 'consu',  # Producto consumible como en tu ejemplo original
+                'list_price': 0.0,  # Precio por defecto, ajusta si tienes un campo para precio
             })
-            vals['id_product'] = new_product.id  # Asignar el nuevo producto al campo id_product
+            vals['id_product'] = new_product.id  # Asigna el nuevo producto al campo id_product
 
         return super(StickersCustomized, self).create(vals)
 
