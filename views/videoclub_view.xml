@@ -205,7 +205,7 @@
     <field name="name">stickers.customized.graph</field>
     <field name="model">stickers.customized</field>
     <field name="arch" type="xml">
-        <graph string="Formas Más Utilizadas" type="bar">
+        <graph string="Shape most used" type="bar">
             <!-- Eje X: Nombre de la forma -->
             <field name="id_shape" type="row"/>
             <!-- Eje Y: Conteo de registros por forma -->
@@ -216,14 +216,14 @@
 
 <!-- Acción para mostrar el gráfico -->
 <record id="action_stickers_customized_graph" model="ir.actions.act_window">
-    <field name="name">Formas Más Utilizadas</field>
+    <field name="name">Shape most used</field>
     <field name="res_model">stickers.customized</field>
     <field name="view_mode">graph</field>
     <field name="view_id" ref="view_stickers_customized_graph"/>
 </record>
 
 <!-- Submenú para el gráfico -->
-<menuitem name="Formas Más Utilizadas"
+<menuitem name="Shape most used"
           id="menu_stickers_customized_graph"
           parent="menu_stickers_root"
           sequence="15"
