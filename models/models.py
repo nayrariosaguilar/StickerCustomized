@@ -48,7 +48,7 @@ class StickersMaterial(models.Model):
     cost_unit = fields.Float(string="Costo por unidad", help="Costo unitario del material")
     last_purchase_date = fields.Date(string="Fecha de última compra")
     stock = fields.Float(
-        string="Cantidad disponible (m²)",
+        string="Cantidad disponible",
         compute="_compute_stock",
         store=True
     )
@@ -58,10 +58,10 @@ class StickersMaterial(models.Model):
         readonly=False
     )
 
-    @api.depends('product_template_id.qty_available')
+    @api.depends('product_template_id.virtual_available')
     def _compute_stock(self):
         for material in self:
-            material.stock = material.product_template_id.qty_available
+            material.stock = material.product_template_id.virtual_available
 
 class StickersCustomized(models.Model):
     _name = 'stickers.customized'
