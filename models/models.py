@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
-
+# Clase principal de Scale que refiere a que tipo de mesura se usara al sticker
 class StickersScale(models.Model):
     _name = 'stickers.scale'
     _description = "Scales available for stickers"
@@ -13,6 +13,8 @@ class StickersScale(models.Model):
         default="cm"
     )
 
+
+# Clase principal de Shape que se refiere al tipo de forma tendra el sticker
 class StickersShape(models.Model):
     _name = 'stickers.shape'
     _description = "Shapes available for stickers"
@@ -25,7 +27,7 @@ class StickersShape(models.Model):
     _sql_constraints = [
         ('name_unique', 'UNIQUE(name)', 'The shape name must be unique!')
     ]
-
+# Clase principal de Printing que se refiere al tipo de acabado tendra el sticker
 class StickersPrinting(models.Model):
     _name = 'stickers.printing'
     _description = "Printing types available for stickers"
@@ -36,9 +38,11 @@ class StickersPrinting(models.Model):
         help="Name of the printing type"
     )
 
+# Clase principal de Material que se refiere a que materiales estan relacionadas al stiker
 class StickersMaterial(models.Model):
     _name = 'stickers.material'
     _description = 'Materiales para fabricación de stickers'
+#Se hereda de la product.template atributos como el nombre, la descripción, la stock, etc (SI YA EXISTE SINO se puede crear)
 
     product_template_id = fields.Many2one(
         'product.template',
@@ -46,29 +50,35 @@ class StickersMaterial(models.Model):
         required=True,
         ondelete='cascade'
     )
+    #Hace referencia al proveedor del material (es personalizadble)
     main_supplier_id = fields.Many2one('res.partner', string="Proveedor principal")
+    #Precio por unidad
     cost_unit = fields.Float(string="Costo por unidad", help="Costo unitario del material")
+    #Última compra
     last_purchase_date = fields.Date(string="Fecha de última compra")
+    #El stock que controlaremos proximamente
     stock = fields.Float(
         string="Cantidad disponible",
         compute="_compute_stock",
         store=True
     )
+    #La imagen del material
     image_1920 = fields.Image(
         string="Imagen del material",
         related="product_template_id.image_1920",
         readonly=False
     )
-
+    #Este metodo se encarga de calcular el stock del material (en tiempo real, necesario para la advertencia del OnChange)
     @api.depends('product_template_id.virtual_available')
     def _compute_stock(self):
         for material in self:
             material.stock = material.product_template_id.virtual_available
 
+#Clase principal de StickersCustomized que se encarga de crear los stickers personalizados (Todos los tipos de relaciones)
 class StickersCustomized(models.Model):
     _name = 'stickers.customized'
     _description = "Details of customized stickers"
-
+    #El nombre del sticker
     name = fields.Char(
         string="Sticker Name",
         required=True,
@@ -130,7 +140,6 @@ class StickersCustomized(models.Model):
     )
 
 #El api.model se encargará de crear un nuevo producto a partir de la clase stickerCustomized (en products.products)
-
     @api.model
     def create(self, vals):
          # Crea una instancia de sticker
@@ -145,6 +154,7 @@ class StickersCustomized(models.Model):
         #Se relaciona el producto con el sticker
         sticker.id_product = product.id
         return sticker
+
 #Le hemos añadidos la restricción de que la altura y la anchura no puede ser negativa
     @api.constrains('width')
     def _check_width_positive(self):
