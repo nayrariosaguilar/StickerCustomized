@@ -4,11 +4,13 @@ from odoo.exceptions import ValidationError
 class StickersScale(models.Model):
     _name = 'stickers.scale'
     _description = "Scales available for stickers"
+
     name = fields.Char(
         string="Scale Name",
         size=11,
         required=True,
-        help="Name of the scale"
+        help="Name of the scale",
+        default="cm"
     )
 
 class StickersShape(models.Model):

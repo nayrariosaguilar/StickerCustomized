@@ -1,0 +1,19 @@
+<odoo>
+    <data noupdate="1">
+        <record id="shape_circle" model="stickers.shape">
+            <field name="name">Círculo</field>
+        </record>
+        <record id="shape_square" model="stickers.shape">
+            <field name="name">Cuadrado</field>
+        </record>
+        <record id="shape_rectangle" model="stickers.shape">
+            <field name="name">Rectángulo</field>
+        </record>
+        <record id="shape_oval" model="stickers.shape">
+            <field name="name">Óvalo</field>
+        </record>
+        <record id="shape_star" model="stickers.shape">
+            <field name="name">Estrella</field>
+        </record>
+    </data>
+</odoo>

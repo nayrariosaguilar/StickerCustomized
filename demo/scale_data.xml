@@ -1,0 +1,14 @@
+<odoo>
+    <data noupdate="1">
+        <record id="scale_small" model="stickers.scale">
+            <field name="name">cm</field>
+        </record>
+        <record id="scale_medium" model="stickers.scale">
+            <field name="name">mm</field>
+        </record>
+        <record id="scale_large" model="stickers.scale">
+            <field name="name">m</field>
+        </record>
+
+    </data>
+</odoo>

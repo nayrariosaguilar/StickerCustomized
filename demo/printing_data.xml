@@ -1,0 +1,16 @@
+<odoo>
+    <data noupdate="1">
+        <record id="printing_digital" model="stickers.printing">
+            <field name="name">Impresión Digital</field>
+        </record>
+        <record id="printing_offset" model="stickers.printing">
+            <field name="name">Impresión Offset</field>
+        </record>
+        <record id="printing_silkscreen" model="stickers.printing">
+            <field name="name">Serigrafía</field>
+        </record>
+        <record id="printing_laser" model="stickers.printing">
+            <field name="name">Impresión Láser</field>
+        </record>
+    </data>
+</odoo>
