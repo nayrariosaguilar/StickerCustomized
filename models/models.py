@@ -117,13 +117,13 @@ class StickersCustomized(models.Model):
     @api.model
     def create(self, vals):
         """ Si no se proporciona un id_product, crea un producto automáticamente """
-        if 'id_product' not in vals or not vals.get('id_product'):
+        if 'id_product' not in vals or not vals['product_id']:
             new_product = self.env['product.product'].create({
                 'name': vals.get('name', 'Sticker sin Nombre'),  # Usa 'name' si está en vals, sino un valor por defecto
                 'type': 'consu',  # Producto consumible como en tu ejemplo original
                 'list_price': 0.0,  # Precio por defecto, ajusta si tienes un campo para precio
             })
-            vals['id_product'] = new_product.id  # Asigna el nuevo producto al campo id_product
+            vals['product_id'] = new_product.id  # Asigna el nuevo producto al campo id_product
 
         return super(StickersCustomized, self).create(vals)
 
