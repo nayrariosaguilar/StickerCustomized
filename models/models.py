@@ -132,7 +132,7 @@ class StickersCustomized(models.Model):
              'default_code': f"Sticker-{sticker.id}",
          })
 
-        sticker.product_id = product.id
+        sticker.id_product = product.id
         return sticker
 
     @api.constrains('width')
