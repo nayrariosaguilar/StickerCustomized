@@ -79,8 +79,8 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Personalization">
-                            <field name="message_personalized"/>
+                        <page string="Personalized Image">
+
                             <field name="image_personalized" widget="image"/>
                         </page>
                     </notebook>
